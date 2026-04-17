@@ -11,7 +11,7 @@
     <style>
         :root {
             --fb-navy: #0d1b2a;
-            --fb-red: #d90429; 
+            --fb-red: #d90429; /* Action Red from Fasig Brooks */
             --fb-gold: #efa00b;
             --fb-gray: #f4f7f6;
             --white: #ffffff;
@@ -19,106 +19,193 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; background-color: var(--white); }
-        h1, h2, h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
+        h1, h2, h3, .cta-text { font-family: 'Oswald', sans-serif; text-transform: uppercase; }
 
-        /* 1. Sticky Top Bar */
+        /* 1. Sticky Top Bar (Fasig Brooks Style) */
         .top-bar { 
             background: var(--fb-navy); color: white; padding: 10px 5%; 
             display: flex; justify-content: space-between; align-items: center; 
             position: sticky; top: 0; z-index: 2000; border-bottom: 3px solid var(--fb-red);
         }
         .top-phone { color: var(--fb-gold); font-weight: bold; font-size: 1.3rem; text-decoration: none; }
+        .top-phone i { margin-right: 8px; }
 
         /* 2. Navigation */
         nav { background: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .logo { font-size: 1.4rem; font-weight: bold; color: var(--fb-navy); border-left: 5px solid var(--fb-red); padding-left: 15px; }
         .nav-btn { background: var(--fb-red); color: white; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; }
+        .nav-btn:hover { background: #b00321; transform: scale(1.05); }
 
-        /* 3. Hero Section - Updated with Indian Court Image */
+        /* 3. Hero Section - The "Hook" */
         .hero { 
             height: 75vh; 
-            background: linear-gradient(rgba(13, 27, 42, 0.8), rgba(13, 27, 42, 0.8)), url('http://googleusercontent.com/image_collection/image_retrieval/11216660552082112842_0');
+            background: linear-gradient(rgba(13, 27, 42, 0.75), rgba(13, 27, 42, 0.75)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1600&q=80');
             background-size: cover; background-position: center; background-attachment: fixed;
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 0 20px;
         }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 10px; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 10px; letter-spacing: -1px; }
         .hero p { font-size: 1.4rem; margin-bottom: 30px; color: var(--fb-gold); font-weight: bold; }
 
-        /* 4. Trust Stats */
+        /* 4. Trust Stats Bar */
         .trust-bar { background: var(--fb-gray); padding: 40px 5%; display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 20px; }
-        .stat h3 { font-size: 2.5rem; color: var(--fb-navy); }
+        .stat h3 { font-size: 2.5rem; color: var(--fb-navy); margin-bottom: 5px; }
+        .stat p { font-weight: bold; color: #666; text-transform: uppercase; font-size: 0.9rem; }
 
-        /* 5. Services Section */
+        /* 5. Services Section (Taluka & Village Focused) */
         .section { padding: 80px 10%; }
+        .section-title { text-align: center; font-size: 2.8rem; margin-bottom: 10px; color: var(--fb-navy); }
+        .section-subtitle { text-align: center; color: var(--fb-red); font-weight: bold; margin-bottom: 50px; letter-spacing: 1px; }
+        
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { padding: 45px 30px; background: white; border: 1px solid #eee; transition: 0.4s; text-align: center; }
+        .card { 
+            padding: 45px 30px; background: white; border: 1px solid #eee; 
+            transition: 0.4s; text-align: center; position: relative; overflow: hidden;
+        }
         .card:hover { border-color: var(--fb-red); box-shadow: 0 15px 35px rgba(0,0,0,0.1); transform: translateY(-5px); }
         .card i { font-size: 3.5rem; color: var(--fb-red); margin-bottom: 25px; }
+        .card h3 { font-size: 1.6rem; color: var(--fb-navy); margin-bottom: 15px; }
+        .card p { color: #555; font-size: 1rem; }
+        .card b { color: var(--fb-navy); }
+
+        /* 6. The 3-Step Process */
+        .process-bg { background: var(--fb-navy); color: white; }
+        .step-box { text-align: center; padding: 20px; flex: 1; }
+        .step-num { font-size: 5rem; font-weight: bold; color: var(--fb-red); opacity: 0.3; line-height: 1; }
+
+        /* 7. Appointment Form Placeholder */
+        .booking-section { background: var(--fb-gray); border-radius: 15px; padding: 50px; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        /* 8. Footer & Contact */
+        footer { background: #050a0f; color: #aaa; padding: 60px 10%; text-align: center; }
+        .footer-logo { color: white; font-size: 1.8rem; margin-bottom: 20px; }
 
         /* WhatsApp Button */
         .whatsapp-float { 
             position: fixed; bottom: 30px; right: 30px; background: #25d366; 
             color: white; width: 65px; height: 65px; border-radius: 50%; 
             display: flex; justify-content: center; align-items: center; 
-            font-size: 35px; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); z-index: 3000;
+            font-size: 35px; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); z-index: 3000; transition: 0.3s;
         }
+        .whatsapp-float:hover { transform: scale(1.1); }
 
-        footer { background: #050a0f; color: #aaa; padding: 60px 10%; text-align: center; }
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .top-bar { flex-direction: column; gap: 5px; font-size: 0.8rem; }
+            .nav-links { display: none; }
+            .section { padding: 60px 5%; }
+        }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <span><i class="fas fa-map-marker-alt"></i> KAIJ TALUKA COURT, BEED, MAHARASHTRA</span>
-        <a href="tel:+919000000000" class="top-phone"><i class="fas fa-phone-alt"></i> Call Now</a>
+        <span><i class="fas fa-map-marker-alt"></i> AT POST KAIJ, BEED, MAHARASHTRA</span>
+        <a href="tel:+910000000000" class="top-phone"><i class="fas fa-phone-alt"></i> +91 0000-000000</a>
     </div>
 
     <nav>
         <div class="logo">ADV. RAMESH B. KHANDARE</div>
-        <a href="#appointment" class="nav-btn">FREE CASE REVIEW</a>
+        <a href="#appointment" class="nav-btn">FREE CONSULTATION</a>
     </nav>
 
     <header class="hero">
-        <h1>JUSTICE FOR THE PEOPLE</h1>
-        <p>Expert Notary & Legal Counsel in Kaij Taluka</p>
-        <a href="#appointment" class="nav-btn" style="padding: 20px 45px; font-size: 1.3rem;">BOOK APPOINTMENT</a>
+        <h1>FIGHTING FOR YOUR RIGHTS</h1>
+        <p>Expert Legal Counsel & Notary Services in Kaij Taluka</p>
+        <a href="#appointment" class="nav-btn" style="padding: 20px 45px; font-size: 1.3rem;">BOOK AN APPOINTMENT NOW</a>
     </header>
 
+    <section class="trust-bar">
+        <div class="stat"><h3>20+</h3><p>Years Experience</p></div>
+        <div class="stat"><h3>1500+</h3><p>Satisfied Clients</p></div>
+        <div class="stat"><h3>100%</h3><p>Confidentiality</p></div>
+        <div class="stat"><h3>Taluka</h3><p>Court Expert</p></div>
+    </section>
+
     <section id="services" class="section">
-        <h2 style="text-align: center; margin-bottom: 50px;">Legal & Notary Expertise</h2>
+        <h2 class="section-title">Legal & Notary Expertise</h2>
+        <p class="section-subtitle">Comprehensive Solutions for Village & Taluka Matters</p>
+        
         <div class="grid">
             <div class="card">
                 <i class="fas fa-file-signature"></i>
                 <h3>Official Notary</h3>
-                <p>Authorized Notary for <b>Affidavits</b>, Agreement Attestations, and Certified copies for Govt. work.</p>
+                <p>Authorized <b>Notary Public</b> services. We handle <b>Affidavits</b>, document attestation, and certified copies for all government requirements.</p>
             </div>
+
             <div class="card">
                 <i class="fas fa-map-marked-alt"></i>
                 <h3>Land & Property</h3>
-                <p>Specializing in <b>Land Transfers</b>, 7/12 Records, Mutation (Ferfar), and Property Partitions.</p>
+                <p>Specialist in <b>Land Transfer</b>, 7/12 (Sat-Bara) Utara corrections, Ferfar (Mutation), and ancestral property partitions at the Tahsil level.</p>
             </div>
+
             <div class="card">
                 <i class="fas fa-file-contract"></i>
                 <h3>Legal Agreements</h3>
-                <p>Professional drafting of <b>Sale Deeds</b>, Rent Agreements, and Partnership Deeds.</p>
+                <p>Drafting and Registration of <b>Sale Deeds</b>, Gift Deeds, Lease/Rent Agreements, and Partnership Deeds with full stamp duty support.</p>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-gavel"></i>
+                <h3>Criminal Defense</h3>
+                <p>Strong representation in the <b>Kaij Taluka Court</b> for bail applications, trials, and legal protection in local police matters.</p>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-balance-scale"></i>
+                <h3>Civil Litigation</h3>
+                <p>Handling stay orders, injunctions, and recovery suits. Expert guidance for family disputes and matrimonial law.</p>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-stamp"></i>
+                <h3>Government Work</h3>
+                <p>Legal assistance for <b>Caste Certificates</b>, Income Certificates, and Gazetted notifications for name changes or corrections.</p>
             </div>
         </div>
     </section>
 
-    <section id="appointment" class="section" style="background: var(--fb-gray); text-align: center;">
-        <h2>Schedule Your Visit</h2>
-        <p>Select a time for your Notary or Legal consultation at the Kaij office.</p>
-        <div style="margin-top: 40px; border: 2px dashed #ccc; padding: 50px; background: white;">
-            <a href="https://calendly.com" target="_blank" class="nav-btn">OPEN SCHEDULING CALENDAR</a>
+    <section class="section process-bg">
+        <h2 style="text-align: center; margin-bottom: 50px;">OUR PROVEN PROCESS</h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+            <div class="step-box">
+                <div class="step-num">01</div>
+                <h3>CONSULT</h3>
+                <p>We review your documents and explain the legal path clearly in Marathi or English.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-num">02</div>
+                <h3>EXECUTE</h3>
+                <p>Our team handles the drafting, Notary, and filing at the Taluka Court or Tahsil office.</p>
+            </div>
+            <div class="step-box">
+                <div class="step-num">03</div>
+                <h3>RESOLVE</h3>
+                <p>We ensure your land records are updated or your court matter is settled with integrity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="appointment" class="section">
+        <div class="booking-section">
+            <h2 style="text-align: center; color: var(--fb-navy); margin-bottom: 30px;">DO YOU NEED LEGAL HELP?</h2>
+            <p style="text-align: center; margin-bottom: 40px;">Please schedule your visit or request a call back from Adv. Khandare.</p>
+            
+            <div style="border: 2px dashed #ccc; padding: 40px; text-align: center; background: white;">
+                <p style="color: #888; margin-bottom: 20px;">[Appointment Calendar Widget Loads Here]</p>
+                <a href="https://calendly.com" target="_blank" class="nav-btn">CLICK TO BOOK TIME SLOT</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>Adv. Ramesh Balasaheb Khandare | At Post Kaij, Dist. Beed, Maharashtra</p>
-        <p style="margin-top: 20px;">Disclaimer: This site is for information purposes only.</p>
+        <div class="footer-logo">ADV. RAMESH B. KHANDARE</div>
+        <p>Main Road, At Post Kaij, Dist. Beed, Maharashtra - 431123</p>
+        <p style="margin-top: 20px;"><i class="fas fa-envelope"></i> Email: info@khandarelaw.in</p>
+        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">Disclaimer: As per Bar Council of India rules, this website is for information only and does not constitute a legal solicitation.</p>
     </footer>
 
-    <a href="https://wa.me/919000000000" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/910000000000" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
